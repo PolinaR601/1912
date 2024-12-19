@@ -21,21 +21,19 @@ public class GoController {
     void GoButtonOnAction(ActionEvent event) {
         int num = Integer.parseInt(chTextField.getText().toString());
         String description;
-        int digitCount = String.valueOf(num).length();
-        if (digitCount == 1) {
-            description = "однозначное";
-        }else if (digitCount == 2) {
-                description = "двузначное";
-        }else if (digitCount == 3) {
-                description = "трехзначное";
-        }else {
+        if (num<=0 || num>=1000 ) {
             description = "Ошибка: число должно быть от 1 до 999";
-        }
-        if (num % 2 == 0) {
-                description += " четное число ";
+        }else if (num<=9 ) {
+            description = "однозначное";
+        }else if (num<=99 ) {
+            description = "двузначное";
         }else {
-                description += " нечетное число ";
+            description = "трехзначное";
         }
+        if (num % 2 == 0 && num >0 && num <1000) {
+            description += " четное число ";
+        }else if(num % 2 != 0 && num >0 && num <1000)
+            description += " нечетное число ";
         result.setText(description);
     }
 }
